@@ -1,0 +1,7 @@
+﻿  CW1.cpp
+c:\users\brand\source\repos\cw1\cw1\cw1.cpp(3): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+  c:\users\brand\source\repos\cw1\cw1\cw1.cpp: note: see previous definition of '_CRT_SECURE_NO_WARNINGS'
+c:\users\brand\source\repos\cw1\cw1\cw1.cpp(3): warning C4603: '_CRT_SECURE_NO_WARNINGS': macro is not defined or definition is different after precompiled header use
+  c:\users\brand\source\repos\cw1\cw1\cw1.cpp(3): note: Add macro to precompiled header instead of defining here
+  c:\users\brand\source\repos\cw1\cw1\cw1.cpp(4): note: use of precompiled header
+  CW1.vcxproj -> C:\Users\brand\source\repos\CW1\Debug\CW1.exe
