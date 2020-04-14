@@ -1,23 +1,39 @@
 #pragma once
 #include <iostream>
-#include "GameComponent.h"
 #include <string>
+#include "GameComponent.h"
 
 using namespace std;
 
 enum Direction : unsigned char {
-	Left,
-	Right,
-	Up,
-	Down
+	Left = 1,
+	Right = 2,
+	Up = 3,
+	Down = 4,
 };
 
 class DrawableGameComponent : public GameComponent {
 public:
-	DrawableGameComponent(int inputX, int intputY) {
+	DrawableGameComponent(int inputX, int inputY) {
 		direction = Right;
-		x = inputX;
-		y = intputY;
+		if (inputX < 0) {
+			x = 0;
+		}
+		else if(inputX > 80) {
+			x = 80;
+		}
+		else {
+			x = inputX;
+		}
+		if (inputY < 0) {
+			y = 0;
+		}
+		else if (inputY > 20) {
+			y = 20;
+		}
+		else {
+			y = inputY;
+		}
 	};
 	Direction direction;
 	const int SCREEN_HEIGHT = 20;
@@ -29,36 +45,39 @@ private:
 	void CalculatePosition();
 	int x, y;
 	string currentDirection;
-	
-protected:
-	
 };
 
 void DrawableGameComponent::Update(const tm* eventTime) {
 
 	GameComponent::Update(eventTime);
+	//Change X or Y values based on direction
 	CalculatePosition();
 	Draw();
-
-
 	ChangeDirection();
 };
 
 void DrawableGameComponent::ChangeDirection() {
-	//assigns a new random direction to the direction data member. This direction must be different to the current direction.
-	int randomNumber;
+	//assigns new direction randomly.
+	int rng;
 
-	/* initialize random seed: */
+	// initialize random seed:
 	srand(time(NULL));
 
-	/* generate secret number between 1 and 4: */
-	randomNumber = rand() % 4 + 1;
-	//TO DO Change direction depending on number
+	// generate secret number between 1 and 4:
+	rng = (rand() % 4) + 1;
+	Direction newDirection;
+
+	// check if random generator number is same as current enum direction
+	while (rng == direction)
+		rng = (rand() % 4) + 1;
+	
+	// change enum direction
+	direction = static_cast<Direction>(rng);
 
 };
 
 void DrawableGameComponent::Draw() {
-	//Displays the current direction along with the x and y values on the same line.
+	//Displays the current direction
 	cout << currentDirection << " : " << "X:" << x << " Y:" << y << endl;
 };
 
@@ -66,18 +85,30 @@ void DrawableGameComponent::CalculatePosition() {
 	switch (direction) {
 	case Left:
 		x--;
+		if (x < 0) {
+			x = 0;
+		}
 		currentDirection = "Left";
 		break;
 	case Right:
 		x++;
+		if (x > SCREEN_WIDTH) {
+			x = SCREEN_WIDTH;
+		}
 		currentDirection = "Right";
 		break;
 	case Up:
 		y++;
+		if (y > SCREEN_HEIGHT) {
+			y = SCREEN_HEIGHT;
+		}
 		currentDirection = "Up";
 		break;
 	case Down:
 		y--;
+		if (y < 0) {
+			y = 0;
+		}
 		currentDirection = "Down";
 		break;
 	default:

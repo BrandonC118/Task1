@@ -24,7 +24,7 @@ int main()
 	GameComponent *gc;
 	DrawableGameComponent *dgc;
 	gc = new GameComponent();
-	dgc = new DrawableGameComponent(0, 0);
+	dgc = new DrawableGameComponent(-2, -2);
 
 	//Initialise
 	game.SetInitialise(*Initialise);

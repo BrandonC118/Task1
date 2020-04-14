@@ -4,4 +4,6 @@ c:\users\brand\source\repos\cw1\cw1\cw1.cpp(3): warning C4005: '_CRT_SECURE_NO_W
 c:\users\brand\source\repos\cw1\cw1\cw1.cpp(3): warning C4603: '_CRT_SECURE_NO_WARNINGS': macro is not defined or definition is different after precompiled header use
   c:\users\brand\source\repos\cw1\cw1\cw1.cpp(3): note: Add macro to precompiled header instead of defining here
   c:\users\brand\source\repos\cw1\cw1\cw1.cpp(4): note: use of precompiled header
+c:\users\brand\source\repos\cw1\cw1\drawablegamecomponent.h(64): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\brand\source\repos\cw1\cw1\drawablegamecomponent.h(68): warning C4101: 'newDirection': unreferenced local variable
   CW1.vcxproj -> C:\Users\brand\source\repos\CW1\Debug\CW1.exe
